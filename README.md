@@ -168,6 +168,14 @@ Simply put, this downloads the file as a temp file, we load it in with `TextFile
 
 Why do we want to support streaming? What about streaming is important, or useful?
 
+```
+We support streaming for several key reasons:
+1. Improved user experience - users see responses appear gradually rather than waiting for the full response
+2. Reduced latency - first words appear much faster than waiting for complete response
+3. Better resource management - allows processing and sending chunks of text as they're generated
+4. More interactive feel - creates a more natural conversational experience
+```
+
 ### On Chat Start:
 
 The next scope is where "the magic happens". On Chat Start is when a user begins a chat session. This will happen whenever a user opens a new chat window, or refreshes an existing chat window.
@@ -209,6 +217,18 @@ Now, we'll save that into our user session!
 #### ❓ QUESTION #2: 
 
 Why are we using User Session here? What about Python makes us need to use this? Why not just store everything in a global variable?
+
+```
+We use User Session instead of global variables because:
+
+1. **Concurrent Users**: Multiple users access the app simultaneously. Global variables would cause all users to share the same state, mixing up their files and chat histories.
+
+2. **Request Isolation**: Each user's session needs to be independent to prevent data leaks and ensure proper functionality.
+
+3. **Memory Management**: User Session allows proper cleanup of resources when sessions end, preventing memory leaks.
+
+This is why Chainlit provides User Session - it's the safe and efficient way to handle per-user state.
+```
 
 ### On Message
 
@@ -325,6 +345,13 @@ You just deployed Pythonic RAG!
 
 Try uploading a text file and asking some questions!
 
+Here's an example Q&A session using the sample text file:
+
+![Example Q&A using the Climate Change sample text](testing/Q&AOnSampleTextFile.png)
+
+The sample text file used in this example can be found [here](testing/sample_text_file_on_climatechange.txt).
+
+
 #### ❓ Discussion Question #1:
 
 Upload a PDF file of the recent DeepSeek-R1 paper and ask the following questions:
@@ -333,7 +360,34 @@ Upload a PDF file of the recent DeepSeek-R1 paper and ask the following question
 2. What is the difference between DeepSeek-R1 and DeepSeek-R1-Zero?
 3. What is this paper about?
 
+
+Here's an example Q&A session using the DeepSeek-R1 paper:
+
+![Example Q&A using the DeepSeek-R1 paper](testing/Q&AOnDeepSeek_R1Paper.png)
+
+The DeepSeek-R1 paper used in this example can be found in [testing/DeepSeek-R1.pdf](testing/DeepSeek_R1.pdf). This paper discusses DeepSeek-R1, a large language model trained using reinforcement learning to improve reasoning capabilities.
+
+
 Does this application pass your vibe check? Are there any immediate pitfalls you're noticing?
+
+
+
+#### 🔍 Vibe Check
+
+Looking at both Q&A examples:
+✅ Clear, accurate responses that stay on topic
+✅ Successfully handles both simple text and technical papers
+✅ Good use of context to provide relevant answers
+
+Could improve with:
+- Source citations
+- Multi-turn conversation support (maintaining history)
+
+But overall: Passes the vibe check! 👍
+
+
+
+
 
 ## 🚧 CHALLENGE MODE 🚧
 

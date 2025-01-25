@@ -361,12 +361,19 @@ Upload a PDF file of the recent DeepSeek-R1 paper and ask the following question
 3. What is this paper about?
 
 
-Here's an example Q&A session using the DeepSeek-R1 paper:
+Here's the Q&A session using the DeepSeek-R1 paper:
 
 ![Example Q&A using the DeepSeek-R1 paper](testing/Q&AOnDeepSeek_R1Paper.png)
 
 The DeepSeek-R1 paper used in this example can be found in [testing/DeepSeek-R1.pdf](testing/DeepSeek_R1.pdf). This paper discusses DeepSeek-R1, a large language model trained using reinforcement learning to improve reasoning capabilities.
 
+Adding answers here as well:
+
+1.RL stands for Reinforcement Learning, which is a type of machine learning where an agent learns to make decisions by receiving rewards or penalties based on its actions. In the context of reasoning for language models, RL helps by allowing the model to develop reasoning capabilities through interaction with the environment, thus enabling it to improve its performance on reasoning tasks over time.
+
+2.The difference between DeepSeek-R1 and DeepSeek-R1-Zero lies primarily in their training methods. DeepSeek-R1-Zero is trained via large-scale reinforcement learning without any supervised fine-tuning as a preliminary step, while DeepSeek-R1 incorporates multi-stage training and utilizes a small amount of cold-start data before reinforcement learning. This integration aims to improve the reasoning performance and address issues such as poor readability and language mixing that were encountered in DeepSeek-R1-Zero.
+
+3.This paper introduces two reasoning models, DeepSeek-R1-Zero and DeepSeek-R1, focusing on the capabilities that can be achieved through reinforcement learning. It discusses the challenges faced by DeepSeek-R1-Zero and presents DeepSeek-R1 as an improved model that incorporates cold-start data and multi-stage training to enhance reasoning performance and readability. The paper aims to demonstrate the potential of these models and support the research community by open-sourcing them.
 
 Does this application pass your vibe check? Are there any immediate pitfalls you're noticing?
 
@@ -390,6 +397,9 @@ But overall: Passes the vibe check! 👍
 
 
 ## 🚧 CHALLENGE MODE 🚧
+
+
+
 
 For the challenge mode, please instead create a simple FastAPI backend with a simple React (or any other JS framework) frontend.
 
